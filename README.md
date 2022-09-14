@@ -25,3 +25,44 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Back-end
+
+## Entidades
+
+games = 1  game -> * anuncios
+anuncios = 1 anuncio -> 1 game
+
+## Game 
+
+id
+title
+bannerUrl
+
+## Ad
+
+id
+gameId
+name
+yearPlaying
+discord
+weekDays
+hourStart
+hourEnd
+usaVoiceChannel
+createdAt
+
+## Casos de Uso
+Como o usuário vai se relacionar/ utilizar a nossa aplicação
+Quais açoes ele pode fazer dentro
+Cada caso de uso, vira uma rota dps, cada comunicaçao do back com o front vira um caso de uso
+
+## Dicas
+
+CDN (Content Delivery Network) -> Servidores -> Exp: Amazon
+Postgres permite armazenar JSON
+SqLite permite armazenar JSON
+
+Evitar numeros quebrados no banco
+Banco de dados com valores decimais ou quebrados, ex: horas, em vez de salvar 1h e meia, salvar em minutos 90 min
+preço 17.89, antes de passar pro banco multiplica por 100 e salva 1789 no banco, depois é só dividir por 100 dnv
