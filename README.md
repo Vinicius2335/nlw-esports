@@ -100,3 +100,9 @@ Prisma -> hibernate do ts
   - npx prisma studio -> cria uma interface grafica para navegar no banco
   - possui alguns geradores automaticos
   - prisma como produçao ->  npm i @prisma/client
+
+config no package.json para o express reiniciar sozinho 
+"dev": "tsnd --exit-child src/server.js",
+  - '--exit-child' é para o prisma
+
+
