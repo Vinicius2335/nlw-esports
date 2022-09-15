@@ -9,8 +9,8 @@ import { UtilService } from '../util/services/util.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  games$: Observable<Games[]>;
-  games!: Games[];
+  games$: Observable<any[]>;
+  games!: any[];
 
   constructor(private utilService: UtilService) {
     this.games$ = this.utilService.listGames();

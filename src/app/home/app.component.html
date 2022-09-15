@@ -8,7 +8,8 @@
   <div class="grid grid-cols-6 gap-6 mt-16">
 
     <div *ngFor="let game of games$ | async">
-      <app-game-banner bannerUrl="{{ game.bannerUrl }}" title="{{ game.title }}">
+      <app-game-banner bannerUrl="{{ game.bannerUrl }}" title="{{ game.title }}"
+      [adsCount]="game._count.Ads">
       </app-game-banner>
     </div>
 

@@ -2,7 +2,9 @@ export interface Games {
   id: string;
   title: string;
   bannerUrl: string;
-  count: {
-    ads: number;
-  };
+  _count: Count;
+}
+
+export interface Count {
+  Ads: number
 }
