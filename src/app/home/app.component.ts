@@ -9,8 +9,8 @@ import { UtilService } from '../util/services/util.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  games$: Observable<any[]>;
-  games!: any[];
+  games$: Observable<Games[]>;
+  games!: Games[];
 
   constructor(private utilService: UtilService) {
     this.games$ = this.utilService.listGames();
@@ -24,6 +24,3 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 }
-
-// FIXME: imagem do lol
-// FIXME: numero de anuncio

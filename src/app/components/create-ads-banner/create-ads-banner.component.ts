@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from '../dialog/service/dialog.service';
 
 @Component({
   selector: 'app-create-ads-banner',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAdsBannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    this.dialogService.openDialog();
   }
 
 }
