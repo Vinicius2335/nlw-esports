@@ -98,8 +98,14 @@ Prisma -> hibernate do ts
   - npx prisma migrate dev
     - uma migration é = git para o banco de dados
   - npx prisma studio -> cria uma interface grafica para navegar no banco
+    - só funciona dentro da pasta prisma
   - possui alguns geradores automaticos
   - prisma como produçao ->  npm i @prisma/client
+
+para o react
+  - headless
+  - ariakit
+  - radix
 
 config no package.json para o express reiniciar sozinho 
 "dev": "tsnd --exit-child src/server.js",
