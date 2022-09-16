@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -12,9 +13,21 @@ export interface DialogData {
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
+  form = this.formBuilder.group({
+    game: [''],
+    name: [''],
+    yearsPlaying: [''],
+    discord: [''],
+    weekDays: [''],
+    hourStart: [''],
+    hourEnd: [''],
+    useVoiceChannel: ['']
+  });
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private formBuilder: NonNullableFormBuilder
   ) {}
 
   ngOnInit(): void {}
