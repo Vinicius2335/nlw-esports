@@ -22,7 +22,6 @@ export class DialogComponent implements OnInit {
     hourStart: [''],
     hourEnd: [''],
     usaVoiceChannel: [false],
-    // weekDays: [''],
     weekDays: new FormArray<any>([])
   });
 

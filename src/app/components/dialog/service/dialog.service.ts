@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogComponent } from '../dialog.component';
@@ -7,8 +7,6 @@ import { DialogComponent } from '../dialog.component';
   providedIn: 'root',
 })
 export class DialogService {
-  animal!: string;
-  name!: string;
 
   constructor(private dialog: MatDialog) {}
 
@@ -16,12 +14,11 @@ export class DialogService {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '520px',
       panelClass: 'custom',
-      data: { name: this.name, animal: this.animal },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
+
   }
 }

@@ -17,7 +17,7 @@
 
       <!-- name -->
       <div>
-        <app-form-input-field formControlName="name"  label="Seu nome (ou nickname)"
+        <app-form-input-field formControlName="name" label="Seu nome (ou nickname)"
                               placeholder="Como te chamam dentro do game?">
         </app-form-input-field>
       </div>
@@ -43,8 +43,9 @@
           <!-- weekDays -->
           <label class="font-semibold">Quando costuma jogar?</label>
           <mat-button-toggle-group name="weekDays" aria-label="Dias da Semana"
-          #weekDaysSelect="matButtonToggleGroup" formArrayName="weekDays" multiple>
-            <mat-button-toggle [ngClass]="isChecked(btnD)" value="0" title="Domingo" ="" #btnD> D
+                                   #weekDaysSelect="matButtonToggleGroup" formArrayName="weekDays"
+                                   multiple>
+            <mat-button-toggle [ngClass]="isChecked(btnD)" value="0" title="Domingo" #btnD> D
             </mat-button-toggle>
             <mat-button-toggle [ngClass]="isChecked(btnS)" value="1" title="Segunda" #btnS> S
             </mat-button-toggle>
