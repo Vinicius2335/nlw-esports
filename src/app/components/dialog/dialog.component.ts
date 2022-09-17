@@ -1,16 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { MatButtonToggle } from '@angular/material/button-toggle';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Games } from 'src/app/util/model/games';
 
 import { UtilService } from './../../util/services/util.service';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-dialog',
@@ -21,21 +17,21 @@ export class DialogComponent implements OnInit {
   form = this.formBuilder.group({
     game: [''],
     name: [''],
-    yearsPlaying: [''],
+    yearPlaying: [0],
     discord: [''],
-    weekDays: [''],
     hourStart: [''],
     hourEnd: [''],
-    useVoiceChannel: ['']
+    usaVoiceChannel: [false],
+    // weekDays: [''],
+    weekDays: new FormArray<any>([])
   });
 
   games$!: Observable<Games[]>;
   gameSelect!: string;
-  buttonChecked!: MatButtonToggle;
+  @ViewChild('weekDaysSelect') weekDaysSelect!: MatButtonToggle;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private formBuilder: NonNullableFormBuilder,
     private utilService: UtilService
   ) {}
@@ -43,6 +39,17 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.games$ = this.utilService.listGames();
   }
+
+  get weekDaysFormArray() {
+    return this.form.controls.weekDays as FormArray;
+  }
+
+  private addCheckboxesToForm() {
+    let arrayWeekDays = this.weekDaysSelect.value;
+    arrayWeekDays.forEach((value: any) =>
+    this.weekDaysFormArray.push(new FormControl(value))
+  )}
+
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -53,16 +60,16 @@ export class DialogComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.form.value.game);//ok
-    console.log(this.form.value.name);
-    console.log(this.form.value.yearsPlaying);
-    console.log(this.form.value.discord);
-    console.log(this.form.value.hourStart); //ok
-    console.log(this.form.value.hourEnd); //ok
-    console.log(this.form.value.useVoiceChannel); //ok
+    this.addCheckboxesToForm();
+    this.utilService.createAnuncio(this.form.value).subscribe({
+      next: () => console.log('Anuncio Criado'),
+      error: () => console.error("Erro"),
+      complete: () => console.info('Insert Completado'),
+    });
+
     this.onNoClick();
   }
 }
 
 // NOTE: VALIDAÇAO
-// NOTE: 
+// NOTE: Type no input, Corrigindo yearPlaying

@@ -112,3 +112,15 @@ config no package.json para o express reiniciar sozinho
   - '--exit-child' é para o prisma
 
 
+{
+    "name": "Ikki252",
+    "weekDays": [
+      "1",
+      "4"
+    ],
+    "usaVoiceChannel": false,
+    "yearPlaying": 5,
+    "discord": "Ikki252#5678",
+    "hourStart": "00:00",
+    "hourEnd": "05:00"
+}

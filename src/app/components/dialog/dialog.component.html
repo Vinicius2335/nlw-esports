@@ -8,7 +8,7 @@
         <mat-form-field appearance="fill" class="w-full">
           <mat-label class="font-semibold">Selecione o game que deseja jogar</mat-label>
           <mat-select formControlName="game">
-            <mat-option *ngFor="let game of games$ |async" [value]="game.title">
+            <mat-option *ngFor="let game of games$ |async" [value]="game.id">
               {{ game.title }}
             </mat-option>
           </mat-select>
@@ -25,7 +25,7 @@
       <div class="grid grid-cols-2 gap-6">
         <div class="flex flex-col-2">
           <!-- yearsPlaying -->
-          <app-form-input-field formControlName="yearsPlaying" label="Joga há quantos anos?"
+          <app-form-input-field formControlName="yearPlaying" label="Joga há quantos anos?"
                                 placeholder="Tudo bem ser ZERO">
           </app-form-input-field>
         </div>
@@ -42,8 +42,9 @@
         <div class="flex flex-col gap-2">
           <!-- weekDays -->
           <label class="font-semibold">Quando costuma jogar?</label>
-          <mat-button-toggle-group name="weekDays" aria-label="Dias da Semana" multiple>
-            <mat-button-toggle [ngClass]="isChecked(btnD)" value="0" title="Domingo" #btnD> D
+          <mat-button-toggle-group name="weekDays" aria-label="Dias da Semana"
+          #weekDaysSelect="matButtonToggleGroup" formArrayName="weekDays" multiple>
+            <mat-button-toggle [ngClass]="isChecked(btnD)" value="0" title="Domingo" ="" #btnD> D
             </mat-button-toggle>
             <mat-button-toggle [ngClass]="isChecked(btnS)" value="1" title="Segunda" #btnS> S
             </mat-button-toggle>
@@ -74,7 +75,7 @@
 
       <!-- useVoiceChannel -->
       <div class="mt-2 flex gap-2 text-sm">
-        <mat-checkbox formControlName="useVoiceChannel" color="primary">
+        <mat-checkbox formControlName="usaVoiceChannel" color="primary">
           Costume me conectar ao chat de voz
         </mat-checkbox>
       </div>
@@ -87,7 +88,7 @@
             class="bg-zinc-500 hover:bg-zinc-600 py-3 px-5 h-12 font-semibold">
       Cancelar
     </button>
-    <button mat-button (click)="onSubmit()" class="bg-violet-500 hover:bg-violet-600 px-5 py-3 h-12 
+    <button mat-button (click)="onSubmit()" class="bg-violet-500 hover:bg-violet-600 px-5 py-3 h-12
              font-semibold custon">
       <!-- <img src="./assets/gameController.svg" alt="Icon controller"> -->
       Encontrar duo
