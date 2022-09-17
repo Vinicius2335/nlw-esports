@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill" class="w-full">
   <mat-label class="font-semibold">{{ label }}</mat-label>
-  <input matInput [placeholder]="placeholder"
+  <input matInput [placeholder]="placeholder" [(ngModel)]="value"
          class="text-sm" [readonly]="!!isReadOnly">
 </mat-form-field>

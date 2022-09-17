@@ -14,7 +14,7 @@ export class DialogService {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '500px',
+      width: '520px',
       panelClass: 'custom',
       data: { name: this.name, animal: this.animal },
     });

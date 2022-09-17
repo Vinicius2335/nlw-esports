@@ -10,15 +10,9 @@ import { UtilService } from '../util/services/util.service';
 })
 export class AppComponent implements OnInit {
   games$: Observable<Games[]>;
-  games!: Games[];
 
   constructor(private utilService: UtilService) {
     this.games$ = this.utilService.listGames();
-    this.utilService.listGames().subscribe(
-      (result) => this.games = result
-    );
-
-    console.log(this.games);
   }
 
   ngOnInit(): void {
