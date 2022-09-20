@@ -5,12 +5,14 @@
     Seu <span class="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
   </h1>
 
-  <div class="grid grid-cols-6 gap-6 mt-16">
-    <div *ngFor="let game of games$ | async">
-      <app-game-banner bannerUrl="{{ game.bannerUrl }}" title="{{ game.title }}"
+  <div class="mt-16 w-full">
+    <swiper [config]="config" style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff">
+      <ng-template swiperSlide *ngFor="let game of games$ | async">
+        <app-game-banner bannerUrl="{{ game.bannerUrl }}" title="{{ game.title }}"
       [adsCount]="game._count.Ads">
       </app-game-banner>
-    </div>
+      </ng-template>
+    </swiper>
   </div>
 
   <div class="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-8 overflow-hidden">

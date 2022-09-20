@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { MatButtonToggle } from '@angular/material/button-toggle';
@@ -32,7 +33,8 @@ export class DialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     private formBuilder: NonNullableFormBuilder,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private toastService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -61,9 +63,8 @@ export class DialogComponent implements OnInit {
   onSubmit(){
     this.addCheckboxesToForm();
     this.utilService.createAnuncio(this.form.value).subscribe({
-      next: () => console.log('Anuncio Criado'),
-      error: () => console.error("Erro"),
-      complete: () => console.info('Insert Completado'),
+      next: () => this.toastService.success('Anúncio Criado com sucesso'),
+      error: () => this.toastService.error('Erro na crição do anúncio'),
     });
 
     this.onNoClick();

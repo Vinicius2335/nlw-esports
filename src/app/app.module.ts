@@ -1,9 +1,10 @@
-import { AppMaterialModule } from './util/app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SwiperModule } from 'swiper/angular';
 
 import { CreateAdsBannerComponent } from './components/create-ads-banner/create-ads-banner.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -24,7 +25,15 @@ import { UtilModule } from './util/util.module';
     BrowserAnimationsModule,
     FormsModule,
     UtilModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      disableTimeOut: true,
+      positionClass: 'toast-top-center',
+      tapToDismiss: false,
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
