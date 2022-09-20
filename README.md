@@ -1,9 +1,24 @@
 # NlwEsports
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+Objetivo é possibilitar ao usuário de encontrar/anunciar companheiros para jogar online. 
+
+<img src="./src/assets/Opera Instantâneo_2022-09-17_194048_localhost.png">
+
+## 💻 Tecnologias
+
+- Angular
+- TypeScript
+- Angular Material
+- Tailwind
+- Prisma
+
 
 ## Back-end
 
+<<<<<<< HEAD
+=======
+```` json
+>>>>>>> 799c7ecf66946ca7ed11248937ef17b259b64f9d
 {
     "name": "Ikki252",
     "weekDays": [
@@ -16,3 +31,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     "hourStart": "00:00",
     "hourEnd": "05:00"
 }
+
+````
