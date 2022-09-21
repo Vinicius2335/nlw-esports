@@ -13,6 +13,9 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-error *ngIf="form.get('game')?.invalid">
+          {{ formValidationService.errorMessage($any(form.get('game')), 'Game') }}
+        </mat-error>
       </div>
 
       <!-- name -->
@@ -20,6 +23,9 @@
         <app-form-input-field formControlName="name" label="Seu nome (ou nickname)"
                               placeholder="Como te chamam dentro do game?">
         </app-form-input-field>
+        <mat-error *ngIf="form.get('name')?.invalid">
+          {{ formValidationService.errorMessage($any(form.get('name')), 'Nome') }}
+        </mat-error>
       </div>
 
       <div class="grid grid-cols-2 gap-6">
@@ -31,17 +37,20 @@
         </div>
 
         <!-- discord -->
-        <div class="flex flex-col-2">
+        <div>
           <app-form-input-field formControlName="discord" label="Qual seu Discord?"
                                 placeholder="Usuario#0000">
           </app-form-input-field>
+          <mat-error *ngIf="form.get('discord')?.invalid">
+            {{ formValidationService.errorMessage($any(form.get('discord')), 'Discord') }}
+          </mat-error>
         </div>
       </div>
 
-      <div class="flex gap-6">
+      <div class="flex gap-4">
         <div class="flex flex-col gap-2">
           <!-- weekDays -->
-          <label class="font-semibold">Quando costuma jogar?</label>
+          <mat-label class="font-semibold">Quando costuma jogar?</mat-label>
           <mat-button-toggle-group name="weekDays" aria-label="Dias da Semana"
                                    #weekDaysSelect="matButtonToggleGroup" formArrayName="weekDays"
                                    multiple>
@@ -60,16 +69,20 @@
             <mat-button-toggle [ngClass]="isChecked(btnSab)" value="6" title="Sabado" #btnSab> S
             </mat-button-toggle>
           </mat-button-toggle-group>
+          <mat-error></mat-error>
+          <mat-error *ngIf="form.get('weekDays')?.invalid">
+            {{ formValidationService.errorMessage($any(form.get('weekDays')), 'Selecionar 1 campo') }}
+          </mat-error>
         </div>
 
         <!-- hourStart hourEnd-->
         <div class="flex flex-col gap-2 flex-1">
-          <label class="font-semibold">Qual horário do dia?</label>
+          <mat-label class="font-semibold">Qual horário do dia?</mat-label>
           <div class="grid grid-cols-2 gap-2">
-            <input formControlName="hourStart" type="time" placeholder="De"
-                   class="bg-[#797979] rounded pl-2">
-            <input formControlName="hourEnd" type="time" placeholder="Até"
-                   class="bg-[#797979] rounded pl-2">
+            <input matInput formControlName="hourStart" type="time" title="De"
+                   class="custom rounded ml-2" required>
+            <input matInput formControlName="hourEnd" type="time" title="Até"
+                   class="custom rounded">
           </div>
         </div>
       </div>

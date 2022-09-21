@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -10,6 +11,7 @@ import { CreateAdsBannerComponent } from './components/create-ads-banner/create-
 import { DialogComponent } from './components/dialog/dialog.component';
 import { GameBannerComponent } from './components/game-banner/game-banner.component';
 import { AppComponent } from './home/app.component';
+import { CustomErrorStateMatcher } from './util/model/customErrorStateMatcher';
 import { UtilModule } from './util/util.module';
 
 @NgModule({
@@ -35,7 +37,9 @@ import { UtilModule } from './util/util.module';
       preventDuplicates: true
     }),
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

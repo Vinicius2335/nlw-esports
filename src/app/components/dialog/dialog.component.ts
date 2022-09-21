@@ -1,12 +1,13 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormControl, NonNullableFormBuilder } from '@angular/forms';
+import { FormArray, FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatButtonToggle } from '@angular/material/button-toggle';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Games } from 'src/app/util/model/games';
 
 import { UtilService } from './../../util/services/util.service';
+import { FormValidationService } from './service/form-validation.service';
 
 
 @Component({
@@ -16,14 +17,14 @@ import { UtilService } from './../../util/services/util.service';
 })
 export class DialogComponent implements OnInit {
   form = this.formBuilder.group({
-    game: [''],
-    name: [''],
-    yearPlaying: [0],
-    discord: [''],
-    hourStart: [''],
-    hourEnd: [''],
+    game: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    yearPlaying: [0, [Validators.required]],
+    discord: ['', [Validators.required, this.formValidationService.discordNameValidator]],
+    hourStart: ['', Validators.required],
+    hourEnd: ['', Validators.required],
     usaVoiceChannel: [false],
-    weekDays: new FormArray<any>([])
+    weekDays: new FormArray<any>([], Validators.required)
   });
 
   games$!: Observable<Games[]>;
@@ -34,7 +35,8 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     private formBuilder: NonNullableFormBuilder,
     private utilService: UtilService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    public formValidationService: FormValidationService
   ) {}
 
   ngOnInit(): void {
@@ -71,5 +73,4 @@ export class DialogComponent implements OnInit {
   }
 }
 
-// NOTE: VALIDAÇAO
-// NOTE: Type no input, Corrigindo yearPlaying
+// BUG: problemas no campo de yearPlaying, o valor no input vem como string e na hora de salvar no banco precisa ser um int/number

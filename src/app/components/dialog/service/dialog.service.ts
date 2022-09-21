@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GenericEmiterService } from 'src/app/util/services/generic-emiter.service';
 
 import { DialogComponent } from '../dialog.component';
 
@@ -16,9 +17,9 @@ export class DialogService {
       panelClass: 'custom',
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(() => {
+      GenericEmiterService.get('dialogClosed').emit(true);
     });
-
   }
+  
 }
