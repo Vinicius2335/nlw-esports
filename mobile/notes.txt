@@ -1,0 +1,33 @@
+# R Component
+rnbc →	Create a new React Native Basic Component
+rnso →	Create a new React Native Stylesheet Component
+rnsc →	Create a new React Native Component with Styled Component
+rnscs →	Create a new Styled Component File
+rnsctc →	Get the path to color theme props
+rnsctf →	Get the path to fonts theme props
+nbc →	Create Native Base Component
+
+# bash
+npx expo install expo-linear-gradient - gradiente
+expo install @expo-google-fonts/inter expo-font - fonte
+npm install @react-navigation/native - core navegaçao
+npx expo install react-native-screens react-native-safe-area-context - navegaçao
+npm install @react-navigation/native-stack - estrategia de navegaçao (existe tab e drawer)
+npm install --save phosphor-react-native - icones
+npx expo install react-native-svg - svg
+npx expo install expo-clipboard - copia algo para a area de trabalho
+npx expo install expo-notifications - notificação
+npx expo install expo-modules-core - precisa para as notificações
+
+npx expo start
+
+# componentes do expo
+Linear Gradiente de expo-linear-gradient
+FlatList
+SafeAreaView de react-native-safe-area-context
+Modal
+
+# requisição para o backend
+- precisa colocar o ip da maquina
+- cmd ipconfig -all -> ipv4
+- fetch("http://192.168.0.17:8080/games"), (ip, :porta, /endpoint)

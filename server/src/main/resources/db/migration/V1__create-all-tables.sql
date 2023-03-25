@@ -1,0 +1,36 @@
+-- TABLE GAME
+
+CREATE TABLE IF NOT EXISTS game (
+  id VARCHAR(36) NOT NULL,
+   title VARCHAR(255) NOT NULL,
+   banner_url VARCHAR(255) NOT NULL,
+   CONSTRAINT pk_game PRIMARY KEY (id)
+);
+
+-- TABLE AD
+
+CREATE TABLE IF NOT EXISTS ad (
+  id VARCHAR(36) NOT NULL,
+   name VARCHAR(255) NOT NULL,
+   years_playing INT NOT NULL,
+   discord VARCHAR(255) NOT NULL,
+   hour_start INT NOT NULL,
+   hour_end INT NOT NULL,
+   voice_channel BIT(1) NOT NULL,
+   created_at datetime NOT NULL,
+   game_id VARCHAR(36) NOT NULL,
+   CONSTRAINT pk_ad PRIMARY KEY (id)
+);
+
+ALTER TABLE ad ADD CONSTRAINT FK_AD_ON_GAME FOREIGN KEY (game_id) REFERENCES game (id);
+
+-- TABE WEEK DAYS
+
+CREATE TABLE IF NOT EXISTS week_days (
+  id VARCHAR(36) NOT NULL,
+   week_day INT NOT NULL,
+   ad_id VARCHAR(36) NOT NULL,
+   CONSTRAINT pk_weekdays PRIMARY KEY (id)
+);
+
+ALTER TABLE week_days ADD CONSTRAINT FK_WEEKDAYS_ON_AD FOREIGN KEY (ad_id) REFERENCES ad (id);
