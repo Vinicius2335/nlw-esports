@@ -6,14 +6,17 @@ Objetivo é possibilitar ao usuário de encontrar/anunciar companheiros para jog
 
 ## 💻 Tecnologias
 
-- Angular
+
+### Front-end
+- React
 - TypeScript
-- Angular Material
 - Tailwind
-- Prisma
 
+### Mobile
+- React Native
 
-## Back-end
+### Back-end
+- Java 17
+- Spring Boot
+- MySQL
 
-
-````
