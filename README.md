@@ -19,4 +19,4 @@ Objetivo é possibilitar ao usuário de encontrar/anunciar companheiros para jog
 - Java 17
 - Spring Boot
 - MySQL
-
+- Flyway
